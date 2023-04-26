@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>shoppinglist-frontend</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <parent>
+    <groupId>com.github.rodionovsasha</groupId>
+    <artifactId>shopping-list-vuejs</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+    <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>${frontend-maven-plugin.version}</version>
+        <configuration>
+          <installDirectory>${project.build.directory}</installDirectory>
+        </configuration>
+        <executions>
+          <execution>
+            <id>install node and npm</id>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+            <configuration>
+              <nodeVersion>v8.11.1</nodeVersion>
+              <npmVersion>5.6.0</npmVersion>
+            </configuration>
+          </execution>
+          <!-- Install all project dependencies -->
+          <execution>
+            <id>npm install</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>generate-resources</phase>
+            <configuration>
+              <arguments>install</arguments>
+            </configuration>
+          </execution>
+          <!-- Run all tests -->
+          <execution>
+            <id>npm test</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <arguments>test</arguments>
+            </configuration>
+          </execution>
+          <!-- Build and minify static files -->
+          <execution>
+            <id>npm run build</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <arguments>run build</arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
