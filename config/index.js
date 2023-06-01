@@ -49,6 +49,24 @@ module.exports = {
   },
 
   build: {
+    // Paths
+    proxyTable: {// proxy all webpack dev-server requests starting with /api/v1 to our Spring Boot backend (localhost:8090)
+      '/api/v1': {
+        target: 'https://shopping-list-back.azurewebsites.net',
+        changeOrigin: true
+      }
+    },
+
+    // Various Dev Server settings
+    host: 'localhost', // can be overwritten by process.env.HOST
+    port: 8091, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    autoOpenBrowser: false,
+    errorOverlay: true,
+    notifyOnErrors: true,
+    poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
+
+
+
     // Template for index.html
     // index: path.resolve(__dirname, '../dist/index.html'),
 
