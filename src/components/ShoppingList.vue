@@ -2,7 +2,7 @@
   <div class="col-md-6 offset-md-3">
     <error-alert v-if="error" v-bind:message="message"/>
 
-    <h1>Shopping Lists</h1>
+    <h1>Shopping lists</h1>
     <div v-if="loading">Loading...</div>
     <ul class="list-unstyled" v-else>
       <li v-for="(list, index) in itemsLists" v-bind:key="list.id">
