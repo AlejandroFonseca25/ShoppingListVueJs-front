@@ -17,5 +17,8 @@ export const ItemController = {
       comment: itemComment,
       listId: itemListId
     })
+  },
+  deleteItem(itemId){
+    return AXIOS.delete('/item/' + itemId)
   }
 }
