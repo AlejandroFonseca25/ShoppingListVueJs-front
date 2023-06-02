@@ -31,11 +31,12 @@
 </template>
 
 <script>
-import {AXIOS} from './http-common'
+// import {AXIOS} from './http-common'
 import ErrorAlert from './ErrorAlert'
 import AllListsButton from './AllListsButton'
 import BackToListButton from './BackToListButton'
 import FieldErrors from './classes/FieldErrors'
+import {ItemController} from '../../controller/ItemController'
 
 export default {
   name: 'AddItem',
@@ -52,11 +53,12 @@ export default {
   },
   methods: {
     addItem: function () {
-      AXIOS.post('/item', {
-        name: this.name,
-        comment: this.comment,
-        listId: this.listId
-      })
+      // AXIOS.post('/item', {
+      //   name: this.name,
+      //   comment: this.comment,
+      //   listId: this.listId
+      // })
+      ItemController.createItem(this.name, this.comment, this.listId)
         .then(() => {
           this.$router.push('/itemsList/' + this.listId)
         })
