@@ -20,5 +20,8 @@ export const ItemController = {
   },
   deleteItem(itemId){
     return AXIOS.delete('/item/' + itemId)
+  },
+  buyItem(itemId){
+    return AXIOS.patch('/item/' + itemId + '/buy')
   }
 }

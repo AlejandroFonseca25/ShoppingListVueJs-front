@@ -19,5 +19,5 @@ export const ShoppingListController = {
     return AXIOS.put('/itemsList/' + listId, {
       name: listName
     })
-  }
+  },
 }
