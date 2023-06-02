@@ -8,5 +8,8 @@ export const ShoppingListController = {
   },
   getItemsLists(){
     return AXIOS.get('/')
+  },
+  deleteItemsList(id){
+    return AXIOS.delete('/itemsList/' + id)
   }
 }

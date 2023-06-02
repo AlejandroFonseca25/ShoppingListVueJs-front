@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import {AXIOS} from './http-common'
 import ErrorAlert from './ErrorAlert'
 import {ShoppingListController} from '../../controller/ShoppingListController'
 
@@ -51,7 +50,7 @@ export default {
       this.$dialog.confirm('Are you sure you want to delete this list?')
         .then(() => {
           console.log('Delete clicked')
-          AXIOS.delete('/itemsList/' + id)
+          ShoppingListController.deleteItemsList(id)
             .then(() => {
               // remove list from array
               this.itemsLists.splice(index, 1)
