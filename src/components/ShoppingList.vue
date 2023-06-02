@@ -20,6 +20,7 @@
 <script>
 import {AXIOS} from './http-common'
 import ErrorAlert from './ErrorAlert'
+import {ShoppingListController} from '../../controller/ShoppingListController'
 
 export default {
   name: 'ShoppingList',
@@ -33,7 +34,7 @@ export default {
     }
   },
   mounted () {
-    AXIOS.get('/')
+    ShoppingListController.getItemsLists()
       .then(response => {
         this.itemsLists = response.data
         this.loading = false

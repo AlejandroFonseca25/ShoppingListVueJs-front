@@ -5,5 +5,8 @@ export const ShoppingListController = {
     return AXIOS.post('/itemsList', {
       name: nameParam
     })
+  },
+  getItemsLists(){
+    return AXIOS.get('/')
   }
 }
