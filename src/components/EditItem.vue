@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import {AXIOS} from './http-common'
 import ErrorAlert from './ErrorAlert'
 import AllListsButton from './AllListsButton'
 import BackToListButton from './BackToListButton'
@@ -64,11 +63,7 @@ export default {
   },
   methods: {
     editItem: function () {
-      AXIOS.put('/item/' + this.itemId, {
-        name: this.item.name,
-        comment: this.item.comment,
-        listId: this.item.listId
-      })
+      ItemController.editItem(this.itemId, this.item.name, this.item.comment, this.item.listId)
         .then(() => {
           this.$router.push('/itemsList/' + this.item.listId)
         })

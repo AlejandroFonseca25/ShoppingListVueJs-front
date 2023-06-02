@@ -10,5 +10,12 @@ export const ItemController = {
   },
   getItemById(itemId){
     return AXIOS.get('/item/' + itemId)
+  },
+  editItem(itemId, itemName, itemComment, itemListId){
+    return AXIOS.put('/item/' + itemId, {
+      name: itemName,
+      comment: itemComment,
+      listId: itemListId
+    })
   }
 }
