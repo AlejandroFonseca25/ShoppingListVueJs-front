@@ -31,7 +31,6 @@
 </template>
 
 <script>
-// import {AXIOS} from './http-common'
 import ErrorAlert from './ErrorAlert'
 import AllListsButton from './AllListsButton'
 import BackToListButton from './BackToListButton'
@@ -53,11 +52,6 @@ export default {
   },
   methods: {
     addItem: function () {
-      // AXIOS.post('/item', {
-      //   name: this.name,
-      //   comment: this.comment,
-      //   listId: this.listId
-      // })
       ItemController.createItem(this.name, this.comment, this.listId)
         .then(() => {
           this.$router.push('/itemsList/' + this.listId)

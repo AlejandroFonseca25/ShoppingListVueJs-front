@@ -9,7 +9,7 @@ export const ShoppingListController = {
   getItemsLists(){
     return AXIOS.get('/')
   },
-  deleteItemsList(id){
+  deleteItemsListById(id){
     return AXIOS.delete('/itemsList/' + id)
   }
 }

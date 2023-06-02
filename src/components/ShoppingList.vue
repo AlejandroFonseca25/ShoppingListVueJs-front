@@ -50,7 +50,7 @@ export default {
       this.$dialog.confirm('Are you sure you want to delete this list?')
         .then(() => {
           console.log('Delete clicked')
-          ShoppingListController.deleteItemsList(id)
+          ShoppingListController.deleteItemsListById(id)
             .then(() => {
               // remove list from array
               this.itemsLists.splice(index, 1)

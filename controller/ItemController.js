@@ -7,5 +7,8 @@ export const ItemController = {
       comment: commentParam,
       listId: listIdParam
     })
+  },
+  getItemById(itemId){
+    return AXIOS.get('/item/' + itemId)
   }
 }
