@@ -11,5 +11,8 @@ export const ShoppingListController = {
   },
   deleteItemsListById(id){
     return AXIOS.delete('/itemsList/' + id)
+  },
+  getItemsListById(listId){
+    return AXIOS.get('/itemsList/' + listId)
   }
 }

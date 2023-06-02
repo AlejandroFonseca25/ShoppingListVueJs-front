@@ -30,6 +30,7 @@ import ErrorAlert from './ErrorAlert'
 import AllListsButton from './AllListsButton'
 import FieldErrors from './classes/FieldErrors'
 import ItemsList from './classes/ItemsList'
+import {ShoppingListController} from '../../controller/ShoppingListController'
 
 export default {
   name: 'EditItemsList',
@@ -44,7 +45,7 @@ export default {
     }
   },
   mounted () {
-    AXIOS.get('/itemsList/' + this.listId)
+    ShoppingListController.getItemsListById(this.listId)
       .then(response => {
         this.list = new ItemsList(response.data)
         this.error = false
