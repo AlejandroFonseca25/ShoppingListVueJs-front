@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import {AXIOS} from './http-common'
 import ErrorAlert from './ErrorAlert'
 import AllListsButton from './AllListsButton'
 import FieldErrors from './classes/FieldErrors'
@@ -57,9 +56,7 @@ export default {
   },
   methods: {
     updateItemsList: function () {
-      AXIOS.put('/itemsList/' + this.listId, {
-        name: this.list.name
-      })
+      ShoppingListController.updateItemsList(this.listId, this.list.name)
         .then(() => {
           this.$router.push('/')
         })

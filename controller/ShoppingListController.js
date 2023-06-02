@@ -14,5 +14,10 @@ export const ShoppingListController = {
   },
   getItemsListById(listId){
     return AXIOS.get('/itemsList/' + listId)
+  },
+  updateItemsList(listId, listName){
+    return AXIOS.put('/itemsList/' + listId, {
+      name: listName
+    })
   }
 }
