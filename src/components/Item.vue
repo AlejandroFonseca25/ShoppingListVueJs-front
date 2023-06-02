@@ -54,11 +54,11 @@
 </template>
 
 <script>
-import {AXIOS} from './http-common'
 import ErrorAlert from './ErrorAlert'
 import AllListsButton from './AllListsButton'
 import BackToListButton from './BackToListButton'
 import Item from './classes/Item'
+import {ItemController} from '../../controller/ItemController'
 
 export default {
   name: 'Item',
@@ -73,7 +73,7 @@ export default {
     }
   },
   mounted () {
-    AXIOS.get('/item/' + this.itemId)
+    ItemController.getItemById(this.itemId)
       .then(response => {
         this.item = new Item(response.data)
         this.loading = false
@@ -91,7 +91,7 @@ export default {
       this.$dialog.confirm('Are you sure you want to delete this item?')
         .then(() => {
           console.log('Delete clicked')
-          AXIOS.delete('/item/' + id)
+          ItemController.deleteItem(id)
             .then(() => {
               this.$router.push('/itemsList/' + this.item.listId)
             })
