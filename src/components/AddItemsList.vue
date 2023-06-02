@@ -25,10 +25,10 @@
 </template>
 
 <script>
-import {AXIOS} from './http-common'
 import ErrorAlert from './ErrorAlert'
 import AllListsButton from './AllListsButton'
 import FieldErrors from './classes/FieldErrors'
+import {ShoppingListController} from '../../controller/ShoppingListController'
 
 export default {
   name: 'AddItemsList',
@@ -43,9 +43,7 @@ export default {
   },
   methods: {
     addItemsList: function () {
-      AXIOS.post('/itemsList', {
-        name: this.name
-      })
+      ShoppingListController.createItemsList(this.name)
         .then(() => {
           this.$router.push('/')
         })

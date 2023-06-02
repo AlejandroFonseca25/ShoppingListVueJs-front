@@ -31,12 +31,12 @@
 </template>
 
 <script>
-import {AXIOS} from './http-common'
 import ErrorAlert from './ErrorAlert'
 import AllListsButton from './AllListsButton'
 import BackToListButton from './BackToListButton'
 import FieldErrors from './classes/FieldErrors'
 import Item from './classes/Item'
+import {ItemController} from '../../controller/ItemController'
 
 export default {
   name: 'EditItem',
@@ -51,7 +51,7 @@ export default {
     }
   },
   mounted () {
-    AXIOS.get('/item/' + this.itemId)
+    ItemController.getItemById(this.itemId)
       .then(response => {
         this.item = new Item(response.data)
         this.error = false
@@ -63,11 +63,7 @@ export default {
   },
   methods: {
     editItem: function () {
-      AXIOS.put('/item/' + this.itemId, {
-        name: this.item.name,
-        comment: this.item.comment,
-        listId: this.item.listId
-      })
+      ItemController.editItem(this.itemId, this.item.name, this.item.comment, this.item.listId)
         .then(() => {
           this.$router.push('/itemsList/' + this.item.listId)
         })

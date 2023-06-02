@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import {AXIOS} from './http-common'
 import ErrorAlert from './ErrorAlert'
+import {ShoppingListController} from '../../controller/ShoppingListController'
 
 export default {
   name: 'ShoppingList',
@@ -33,7 +33,7 @@ export default {
     }
   },
   mounted () {
-    AXIOS.get('/')
+    ShoppingListController.getItemsLists()
       .then(response => {
         this.itemsLists = response.data
         this.loading = false
@@ -50,7 +50,7 @@ export default {
       this.$dialog.confirm('Are you sure you want to delete this list?')
         .then(() => {
           console.log('Delete clicked')
-          AXIOS.delete('/itemsList/' + id)
+          ShoppingListController.deleteItemsListById(id)
             .then(() => {
               // remove list from array
               this.itemsLists.splice(index, 1)

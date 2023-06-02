@@ -51,10 +51,11 @@
 </template>
 
 <script>
-import {AXIOS} from './http-common'
 import AllListsButton from './AllListsButton'
 import ErrorAlert from './ErrorAlert'
 import ItemsList from './classes/ItemsList'
+import {ShoppingListController} from '../../controller/ShoppingListController'
+import {ItemController} from '../../controller/ItemController'
 
 export default {
   name: 'ItemsList',
@@ -69,7 +70,7 @@ export default {
     }
   },
   mounted () {
-    AXIOS.get('/itemsList/' + this.listId)
+    ShoppingListController.getItemsListById(this.listId)
       .then(response => {
         this.list = new ItemsList(response.data)
         this.loading = false
@@ -83,7 +84,7 @@ export default {
   },
   methods: {
     buy: function (id, index) {
-      AXIOS.patch('/item/' + id + '/buy')
+      ItemController.buyItem(id)
         .then(() => {
           console.log('Buy clicked')
           this.error = false
@@ -99,7 +100,7 @@ export default {
       this.$dialog.confirm('Are you sure you want to delete this item?')
         .then(() => {
           console.log('Delete clicked')
-          AXIOS.delete('/item/' + id)
+          ItemController.deleteItem(id)
             .then(() => {
               // remove item from array
               this.list.items.splice(index, 1)
@@ -119,7 +120,7 @@ export default {
       this.$dialog.confirm('Are you sure you want to delete this list?')
         .then(() => {
           console.log('Delete clicked')
-          AXIOS.delete('/itemsList/' + id)
+          ItemController.deleteItem(id)
             .then(() => {
               this.$router.push('/')
             })
