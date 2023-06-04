@@ -120,7 +120,7 @@ export default {
       this.$dialog.confirm('Are you sure you want to delete this list?')
         .then(() => {
           console.log('Delete clicked')
-          ItemController.deleteItem(id)
+          ShoppingListController.deleteItemsListById(id)
             .then(() => {
               this.$router.push('/')
             })

@@ -36,6 +36,10 @@ class ShoppingList{
   public getNumberOfItems(){
     return this.numberOfItems;
   }
+
+  public getDeleteButtonInTheDeletionAlert(){
+    return this.deleteButtonInTheDeletionAlert;
+  }
 }
 
 export {ShoppingList}

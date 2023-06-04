@@ -73,6 +73,10 @@ class ShoppingListList{
   public getEditShoppingListButton(){
     return this.editShoppingListButton;
   }
+
+  public getCancelButtonInTheDeletionAlert(){
+    return this.cancelButtonInTheDeletionAlert;
+  }
 }
 
 export {ShoppingListList}
