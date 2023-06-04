@@ -2,7 +2,7 @@
   <div class="col-md-6 offset-md-3">
     <error-alert v-if="error" v-bind:message="message"/>
 
-    <h1>Edit {{this.list.name}}</h1>
+    <h1 data-test="edit-title">Edit {{this.list.name}}</h1>
     <form @submit.prevent="updateItemsList" method="post" class="form-horizontal" @keydown="fieldErrors.clear($event.target.name)">
       <div class="form-group">
         <label for="name" class="col-sm-1 control-label">Name:</label>
@@ -13,7 +13,7 @@
       </div>
       <div class="form-group">
         <div class="col-sm-offset-1 col-sm-10">
-          <input type="submit" value="Update list" class="btn btn-outline-secondary" :disabled="fieldErrors.any()"/>
+          <input type="submit" value="Update list" class="btn btn-outline-secondary" :disabled="fieldErrors.any()" data-test="update-shopping-list-btn"/>
         </div>
       </div>
     </form>
