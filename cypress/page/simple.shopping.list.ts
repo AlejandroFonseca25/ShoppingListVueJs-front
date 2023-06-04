@@ -30,6 +30,11 @@ class SimpleShoppingList {
     return this.updateShoppingListButton;
   }
 
+  public editShoppingList(newName:string){
+    cy.get(this.getShoppingListNameInput()).clear().type(newName);
+    cy.wait(2000);
+  }
+
 }
 
 export {SimpleShoppingList}

@@ -1,5 +1,6 @@
 import {ShoppingListList} from "../page/index";
 import {SimpleShoppingList} from "../page/index";
+import {ShoppingList} from "../page/index";
 
 let shoppingListList: ShoppingListList;
 const endpoint = "http://localhost:8091";
@@ -12,7 +13,7 @@ describe("Verifying the CRUD of shopping list", () => {
   });
 
   describe("Verifying the creation of a shopping list", () => {
-    it("The page should create a shopping list successfully", async () => {
+    it("should create a shopping list successfully", async () => {
       let initialNumberOfShoppingList: any;
       shoppingListList.getNumberOfShoppingLists().then((length) => {
         initialNumberOfShoppingList = length;
@@ -41,7 +42,7 @@ describe("Verifying the CRUD of shopping list", () => {
       });
     });
 
-    it('The page should create a shopping list successfully even when the shopping list name is repeated ', () => {
+    it('should create a shopping list successfully even when the shopping list name is repeated ', () => {
       let initialNumberOfShoppingList: any;
       shoppingListList.getNumberOfShoppingLists().then((length) => {
         initialNumberOfShoppingList = length;
@@ -97,7 +98,7 @@ describe("Verifying the CRUD of shopping list", () => {
       cy.wait(2000);
     });
 
-    it('The page should edit a list successfully ', () => {
+    it('should edit a list successfully', () => {
       let shoppingListCreated: any;
       shoppingListList.getLastShoppingList().then((lastShoppingList) => {
         shoppingListCreated = lastShoppingList;
@@ -108,8 +109,7 @@ describe("Verifying the CRUD of shopping list", () => {
         cy.wrap(shoppingListCreated).find(shoppingListList.getEditShoppingListButton()).click();
         cy.get(simpleShoppingList.getTitleInEditShoppingList()).should("contain.text", "Edit "+shoppingListName);
         let shoppingListNameEdited = shoppingListName + " edited";
-        cy.get(simpleShoppingList.getShoppingListNameInput()).clear().type(shoppingListNameEdited);
-        cy.wait(2000);
+        simpleShoppingList.editShoppingList(shoppingListNameEdited);
         cy.get(simpleShoppingList.getTitleInEditShoppingList()).should("contain.text", "Edit "+shoppingListNameEdited);
         cy.get(simpleShoppingList.getUpdateShoppingListButton()).click();
         shoppingListList.getLastShoppingList().then((lastShoppingListAfterEditing) => {
@@ -120,6 +120,36 @@ describe("Verifying the CRUD of shopping list", () => {
         });
       });
     });
+
+    it('should successfully edit a list when the user enters the shopping list page.', () => {
+      let shoppingList = new ShoppingList();
+        let shoppingListCreated: any;
+        shoppingListList.getLastShoppingList().then((lastShoppingList) => {
+          shoppingListCreated = lastShoppingList;
+          cy.wrap(shoppingListCreated).find(shoppingListList.getGoToShoppingListButton())
+            .click();
+          cy.get(shoppingList.getShoppingListName()).should("contain.text", shoppingListName);
+          cy.get(shoppingList.getNumberOfItems()).should("contain.text", 0);
+          shoppingList.editShoppingList();
+          let shoppingListNameEdited = shoppingListName + " edited";
+          simpleShoppingList.editShoppingList(shoppingListNameEdited);
+          cy.get(simpleShoppingList.getTitleInEditShoppingList()).should("contain.text", "Edit "+shoppingListNameEdited);
+          cy.get(simpleShoppingList.getUpdateShoppingListButton()).click();
+          shoppingListList.getLastShoppingList().then((lastShoppingListAfterEditing) => {
+            cy.wrap(lastShoppingListAfterEditing).find(shoppingListList.getGoToShoppingListButton())
+              .should("contain.text", shoppingListNameEdited);
+            cy.wrap(lastShoppingListAfterEditing).find(shoppingListList.getDeleteShoppingListButton());
+            cy.wrap(lastShoppingListAfterEditing).find(shoppingListList.getEditShoppingListButton());
+            cy.wrap(lastShoppingListAfterEditing).find(shoppingListList.getGoToShoppingListButton())
+              .click();
+            cy.get(shoppingList.getShoppingListName()).should("contain.text", shoppingListNameEdited);
+            cy.get(shoppingList.getNumberOfItems()).should("contain.text", 0);
+            shoppingList.goToHome();
+          });
+
+      });
+    });
   });
 });
+
 
