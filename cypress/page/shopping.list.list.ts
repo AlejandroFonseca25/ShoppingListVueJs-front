@@ -1,4 +1,4 @@
-import {ShoppingList} from "../page/index";
+import {SimpleShoppingList} from "../page/index";
 
 class ShoppingListList{
   private goToAddItemListButton: string;
@@ -9,7 +9,7 @@ class ShoppingListList{
   private readonly editShoppingListButton: string;
   private readonly deleteShoppingListButton: string;
 
-  private shoppingList: ShoppingList;
+  private simpleShoppingList: SimpleShoppingList;
 
   constructor() {
     this.goToAddItemListButton = "[data-test='add-list-button']";
@@ -18,14 +18,14 @@ class ShoppingListList{
     this.goToShoppingListButton = "a.btn.btn-outline-secondary";
     this.editShoppingListButton = "a.btn.btn-warning.btn-sm.mx-1";
     this.deleteShoppingListButton = "a.btn.btn-danger.btn-sm";
-    this.deleteButtonInTheDeletionAlert = ".dg-content-cont.dg-content-cont--floating > .dg-main-content > .dg-content-footer > .dg-btn.dg-btn--ok.dg-pull-right";
-    this.cancelButtonInTheDeletionAlert = ".dg-content-cont.dg-content-cont--floating > .dg-main-content > .dg-content-footer > .dg-btn.dg-btn--cancel";
-    this.shoppingList = new ShoppingList();
+    this.deleteButtonInTheDeletionAlert = ".dg-content-footer > .dg-btn.dg-btn--ok.dg-pull-right";
+    this.cancelButtonInTheDeletionAlert = ".dg-content-footer > .dg-btn.dg-btn--cancel";
+    this.simpleShoppingList = new SimpleShoppingList();
   }
 
   public addShoppingList(shoppingListName: string){
     cy.get(this.goToAddItemListButton).click()
-    this.shoppingList.addShoppingList(shoppingListName);
+    this.simpleShoppingList.addShoppingList(shoppingListName);
   }
 
   public deleteLastShoppingList(){
@@ -35,6 +35,7 @@ class ShoppingListList{
         .find(this.deleteShoppingListButton)
         .click();
     })
+    cy.wait(2000);
     cy.get(this.deleteButtonInTheDeletionAlert).click();
   }
 

@@ -1,8 +1,8 @@
-class ShoppingList {
-  private shoppingListNameInput: string;
+class SimpleShoppingList {
   private createShoppingListButton: string;
-  private updateShoppingListButton: string;
-  private titleInEditShoppingList: string
+  private readonly shoppingListNameInput: string;
+  private readonly updateShoppingListButton: string;
+  private readonly titleInEditShoppingList: string
 
   constructor() {
     this.shoppingListNameInput = "[data-test='name-shopping-list']";
@@ -14,10 +14,22 @@ class ShoppingList {
   public addShoppingList(shoppingListName: string){
     console.log(shoppingListName)
     cy.get(this.shoppingListNameInput).type(shoppingListName)
-    cy.wait(1000);
+    cy.wait(2000);
     cy.get(this.createShoppingListButton).click()
+  }
+
+  public getTitleInEditShoppingList(){
+    return this.titleInEditShoppingList;
+  }
+
+  public getShoppingListNameInput(){
+    return this.shoppingListNameInput;
+  }
+
+  public getUpdateShoppingListButton(){
+    return this.updateShoppingListButton;
   }
 
 }
 
-export {ShoppingList}
+export {SimpleShoppingList}
