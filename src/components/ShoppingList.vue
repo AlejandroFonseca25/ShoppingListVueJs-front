@@ -4,7 +4,7 @@
 
     <h1>Shopping lists</h1>
     <div v-if="loading">Loading...</div>
-    <ul class="list-unstyled" v-else>
+    <ul class="list-unstyled" data-test="shopping-list" v-else>
       <li v-for="(list, index) in itemsLists" v-bind:key="list.id">
         <p>
           <router-link v-bind:to="{ path: '/itemsList/' + list.id }" class="btn btn-outline-secondary">{{ list.name }}</router-link>
@@ -13,7 +13,7 @@
         </p>
       </li>
     </ul>
-    <router-link to="/addItemsList" class="btn btn-success btn-sm">Add</router-link>
+    <router-link to="/addItemsList" class="btn btn-success btn-sm" data-test="add-list-button">Add</router-link>
   </div>
 </template>
 

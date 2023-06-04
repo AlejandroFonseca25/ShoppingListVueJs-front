@@ -7,13 +7,13 @@
       <div class="form-group">
         <label for="name" class="col-sm-1 control-label">Name:</label>
         <div class="col-sm-6">
-          <input type="text" id="name" name="name" v-model="name" class="form-control"/>
+          <input type="text" id="name" name="name" v-model="name" class="form-control" data-test="name-shopping-list"/>
           <small v-if="fieldErrors.has('name')" class="text-danger" v-text="fieldErrors.get('name')"></small>
         </div>
       </div>
       <div class="form-group">
         <div class="col-sm-offset-1 col-sm-10">
-          <input type="submit" value="Add list" class="btn btn-outline-secondary" :disabled="fieldErrors.any()"/>
+          <input type="submit" value="Add list" class="btn btn-outline-secondary" :disabled="fieldErrors.any()" data-test="add-shopping-list-btn"/>
         </div>
       </div>
     </form>
