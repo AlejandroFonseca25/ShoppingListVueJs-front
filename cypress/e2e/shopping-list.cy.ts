@@ -3,7 +3,7 @@ import {SimpleShoppingList} from "../page/index";
 import {ShoppingList} from "../page/index";
 
 let shoppingListList: ShoppingListList;
-const endpoint = "http://localhost:8091";
+const endpoint = "https://polite-bush-05fb25610.3.azurestaticapps.net";
 
 describe("Verifying the CRUD of shopping list", () => {
   beforeEach(() => {
