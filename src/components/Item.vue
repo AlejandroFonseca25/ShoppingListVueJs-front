@@ -58,7 +58,7 @@ import ErrorAlert from './ErrorAlert'
 import AllListsButton from './AllListsButton'
 import BackToListButton from './BackToListButton'
 import Item from './classes/Item'
-import {ItemController} from '../../controller/ItemController'
+import ItemController from '../controller/ItemController'
 
 export default {
   name: 'Item',
