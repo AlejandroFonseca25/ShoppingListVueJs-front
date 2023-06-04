@@ -28,7 +28,7 @@
 import ErrorAlert from './ErrorAlert'
 import AllListsButton from './AllListsButton'
 import FieldErrors from './classes/FieldErrors'
-import {ShoppingListController} from '../../controller/ShoppingListController'
+import ShoppingListController from '../controller/ShoppingListController'
 
 export default {
   name: 'AddItemsList',

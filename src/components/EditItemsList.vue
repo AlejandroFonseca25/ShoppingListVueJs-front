@@ -29,7 +29,7 @@ import ErrorAlert from './ErrorAlert'
 import AllListsButton from './AllListsButton'
 import FieldErrors from './classes/FieldErrors'
 import ItemsList from './classes/ItemsList'
-import {ShoppingListController} from '../../controller/ShoppingListController'
+import ShoppingListController from '../controller/ShoppingListController'
 
 export default {
   name: 'EditItemsList',
