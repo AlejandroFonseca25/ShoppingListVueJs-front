@@ -1,7 +1,7 @@
 const {expect} = require('chai');
 const moxios = require('moxios');
-const ShoppingListController = require('../../controller/ShoppingListController').ShoppingListController
-const axiosInstance = require('../../controller/ShoppingListController').axiosInstance
+const ShoppingListController = require('../../../controller/ShoppingListController').ShoppingListController
+const axiosInstance = require('../../../controller/ShoppingListController').axiosInstance
 
 
 

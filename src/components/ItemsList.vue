@@ -55,7 +55,7 @@ import AllListsButton from './AllListsButton'
 import ErrorAlert from './ErrorAlert'
 import ItemsList from './classes/ItemsList'
 import {ShoppingListController} from '../controller/ShoppingListController'
-import ItemController from '../controller/ItemController'
+import {ItemController} from '../controller/ItemController'
 
 export default {
   name: 'ItemsList',
