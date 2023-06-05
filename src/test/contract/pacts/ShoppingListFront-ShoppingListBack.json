@@ -4,35 +4,24 @@
   },
   "interactions": [
     {
-      "description": "a request to delete a list",
-      "providerState": "has list to delete",
+      "description": "a request to delete an item",
+      "providerState": "has items to delete",
       "request": {
         "method": "DELETE",
-        "path": "/api/v1/itemsList/1"
+        "path": "/api/v1/item/1"
       },
       "response": {
         "status": 204
       }
     },
     {
-      "description": "a request to get a list",
-      "providerState": "has list to get",
+      "description": "a request to add an item",
+      "providerState": "there are no items",
       "request": {
-        "method": "GET",
-        "path": "/api/v1/itemsList/1"
-      },
-      "response": {
         "body": {
-          "id": 1,
-          "items": [
-            {
-              "bought": true,
-              "comment": "For juice",
-              "id": 2,
-              "name": "Orange"
-            }
-          ],
-          "name": "Shopping list"
+          "comment": "Fresh parmesan cheese",
+          "listId": 1,
+          "name": "Cheese"
         },
         "headers": {
           "Content-Type": "application/json"
@@ -41,93 +30,10 @@
           "$.body": {
             "match": "type"
           },
-          "$.body.id": {
+          "$.body.comment": {
             "match": "type"
           },
-          "$.body.items": {
-            "match": "type",
-            "min": 1
-          },
-          "$.body.items[*].bought": {
-            "match": "type"
-          },
-          "$.body.items[*].comment": {
-            "match": "type"
-          },
-          "$.body.items[*].id": {
-            "match": "type"
-          },
-          "$.body.items[*].name": {
-            "match": "type"
-          },
-          "$.body.name": {
-            "match": "type"
-          }
-        },
-        "status": 200
-      }
-    },
-    {
-      "description": "a request to update a list",
-      "providerState": "has list to update",
-      "request": {
-        "body": {
-          "name": "Shopping List 1"
-        },
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "method": "PUT",
-        "path": "/api/v1/itemsList/1"
-      },
-      "response": {
-        "status": 204
-      }
-    },
-    {
-      "description": "a request to get all lists",
-      "providerState": "has lists to get",
-      "request": {
-        "method": "GET",
-        "path": "/api/v1/"
-      },
-      "response": {
-        "body": [
-          {
-            "id": 45326,
-            "name": "Shopping list"
-          }
-        ],
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "matchingRules": {
-          "$.body": {
-            "match": "type",
-            "min": 1
-          },
-          "$.body[*].id": {
-            "match": "type"
-          },
-          "$.body[*].name": {
-            "match": "type"
-          }
-        },
-        "status": 200
-      }
-    },
-    {
-      "description": "a request to add a list",
-      "providerState": "there are no lists",
-      "request": {
-        "body": {
-          "name": "Shopping list"
-        },
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "matchingRules": {
-          "$.body": {
+          "$.body.listId": {
             "match": "type"
           },
           "$.body.name": {
@@ -135,11 +41,12 @@
           }
         },
         "method": "POST",
-        "path": "/api/v1/itemsList"
+        "path": "/api/v1/item"
       },
       "response": {
         "body": {
-          "id": 45326
+          "id": 45326,
+          "listId": 1
         },
         "headers": {
           "Content-Type": "application/json"
@@ -149,6 +56,9 @@
             "match": "type"
           },
           "$.body.id": {
+            "match": "type"
+          },
+          "$.body.listId": {
             "match": "type"
           }
         },
