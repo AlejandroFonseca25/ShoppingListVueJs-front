@@ -74,24 +74,24 @@ describe("Verifying the edition of a shopping list", () => {
     });
   });
 
-  // it('should show an error message when the text field is empty', () => {
-  //   // let errorMessage = "must not be blank";
-  //   let errorMessage = "no puede estar vacío";
-  //   let shoppingListCreated: any;
-  //   shoppingListList.getLastShoppingList().then((lastShoppingList) => {
-  //     shoppingListCreated = lastShoppingList;
-  //     cy.wrap(shoppingListCreated).find(shoppingListList.getGoToShoppingListButton())
-  //       .should("contain.text", shoppingListName);
-  //     cy.wrap(shoppingListCreated).find(shoppingListList.getEditShoppingListButton())
-  //       .click();
-  //     cy.get(simpleShoppingList.getShoppingListNameInput()).clear()
-  //     cy.get(simpleShoppingList.getUpdateShoppingListButton()).click()
-  //     cy.get(simpleShoppingList.getErrorMessage()).should("contain.text", errorMessage);
-  //     simpleShoppingList.goToHome();
-  //     shoppingListList.getLastShoppingList().then((lastShoppingListAfter) => {
-  //       cy.wrap(lastShoppingListAfter).find(shoppingListList.getGoToShoppingListButton())
-  //         .should("contain.text", shoppingListName);
-  //     });
-  //   });
-  // });
+  it('should show an error message when the text field is empty', () => {
+    // let errorMessage = "must not be blank";
+    let errorMessage = "no puede estar vacío";
+    let shoppingListCreated: any;
+    shoppingListList.getLastShoppingList().then((lastShoppingList) => {
+      shoppingListCreated = lastShoppingList;
+      cy.wrap(shoppingListCreated).find(shoppingListList.getGoToShoppingListButton())
+        .should("contain.text", shoppingListName);
+      cy.wrap(shoppingListCreated).find(shoppingListList.getEditShoppingListButton())
+        .click();
+      cy.get(simpleShoppingList.getShoppingListNameInput()).clear()
+      cy.get(simpleShoppingList.getUpdateShoppingListButton()).click()
+      cy.get(simpleShoppingList.getErrorMessage()).should("contain.text", errorMessage);
+      simpleShoppingList.goToHome();
+      shoppingListList.getLastShoppingList().then((lastShoppingListAfter) => {
+        cy.wrap(lastShoppingListAfter).find(shoppingListList.getGoToShoppingListButton())
+          .should("contain.text", shoppingListName);
+      });
+    });
+  });
 });
