@@ -1,7 +1,7 @@
 const { Matchers } = require('@pact-foundation/pact')
 const { expect } = require('chai')
 const provider = require('../../config/init-pact')
-const ShoppingListController = require('../../../../controller/ShoppingListController')
+const ShoppingListController = require('../../../../controller/ShoppingListController').ShoppingListController
 
 // eslint-disable-next-line no-undef
 describe('Items List Service - Get lists', () => {

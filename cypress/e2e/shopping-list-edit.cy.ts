@@ -1,5 +1,5 @@
-import {ShoppingListList} from "../page/index";
-import {SimpleShoppingList} from "../page/index";
+import {ShoppingListList, SimpleShoppingListAdd} from "../page/index";
+import {SimpleShoppingListEdit} from "../page/index";
 import {ShoppingList} from "../page/index";
 
 let shoppingListList: ShoppingListList;
@@ -8,19 +8,19 @@ const endpoint = "https://polite-bush-05fb25610.3.azurestaticapps.net";
 describe("Verifying the edition of a shopping list", () => {
 
   let shoppingListName = "Shopping list test"
-  let simpleShoppingList: SimpleShoppingList;
+  let simpleShoppingList: SimpleShoppingListEdit;
 
   beforeEach(() => {
     cy.visit(endpoint);
     shoppingListList = new ShoppingListList();
     cy.wait(2000);
-    simpleShoppingList = new SimpleShoppingList();
+    simpleShoppingList = new SimpleShoppingListEdit();
     shoppingListList.addShoppingList(shoppingListName);
-    cy.wait(2000);
   });
 
   afterEach(() => {
     shoppingListList.deleteLastShoppingList();
+    cy.wait(2000);
   });
 
   it('should edit a list successfully on the homepage', () => {
@@ -73,4 +73,25 @@ describe("Verifying the edition of a shopping list", () => {
       });
     });
   });
+
+  // it('should show an error message when the text field is empty', () => {
+  //   // let errorMessage = "must not be blank";
+  //   let errorMessage = "no puede estar vacío";
+  //   let shoppingListCreated: any;
+  //   shoppingListList.getLastShoppingList().then((lastShoppingList) => {
+  //     shoppingListCreated = lastShoppingList;
+  //     cy.wrap(shoppingListCreated).find(shoppingListList.getGoToShoppingListButton())
+  //       .should("contain.text", shoppingListName);
+  //     cy.wrap(shoppingListCreated).find(shoppingListList.getEditShoppingListButton())
+  //       .click();
+  //     cy.get(simpleShoppingList.getShoppingListNameInput()).clear()
+  //     cy.get(simpleShoppingList.getUpdateShoppingListButton()).click()
+  //     cy.get(simpleShoppingList.getErrorMessage()).should("contain.text", errorMessage);
+  //     simpleShoppingList.goToHome();
+  //     shoppingListList.getLastShoppingList().then((lastShoppingListAfter) => {
+  //       cy.wrap(lastShoppingListAfter).find(shoppingListList.getGoToShoppingListButton())
+  //         .should("contain.text", shoppingListName);
+  //     });
+  //   });
+  // });
 });

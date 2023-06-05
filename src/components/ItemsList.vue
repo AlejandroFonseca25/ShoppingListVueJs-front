@@ -54,8 +54,8 @@
 import AllListsButton from './AllListsButton'
 import ErrorAlert from './ErrorAlert'
 import ItemsList from './classes/ItemsList'
-import ShoppingListController from '../controller/ShoppingListController'
-const ItemController = require('../controller/ItemController').ItemController
+import {ShoppingListController} from '../controller/ShoppingListController'
+import {ItemController} from '../controller/ItemController'
 
 export default {
   name: 'ItemsList',

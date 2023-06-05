@@ -1,5 +1,5 @@
-import { expect } from 'chai';
-import moxios from 'moxios';
+const {expect} = require('chai');
+const moxios = require('moxios');
 const { StatusCodes } = require('http-status-codes');
 const ItemController =  require('../../../controller/ItemController').ItemController;
 const axiosInstance =  require('../../../controller/ItemController').axiosInstance;
