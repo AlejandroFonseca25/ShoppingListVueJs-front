@@ -23,7 +23,7 @@ describe('Item service - Update item', () => {
           }
         },
         willRespondWith: {
-          status: 204
+          status: 200
         }
       })
     })
@@ -36,7 +36,7 @@ describe('Item service - Update item', () => {
       const response = await ItemController.editItem(1,'Orange 2kg','For juice',1)
 
       // Verifying status within response
-      expect(response.status).to.be.eql(204)
+      expect(response.status).to.be.eql(200)
 
       await provider.verify()
     })

@@ -25,14 +25,15 @@ describe('Item service - Get item', () => {
                 name: Matchers.like('Orange 2k'),
                 comment: Matchers.like('For juice'),
                 bought: Matchers.like(true),
+                listId: Matchers.like(1)
             })
           }
         })
       })
-  
+
       // eslint-disable-next-line no-undef
       after(() => provider.finalize())
-  
+
       // eslint-disable-next-line no-undef
       it('should return the correct data', async () => {
         const item = {
@@ -40,24 +41,26 @@ describe('Item service - Get item', () => {
           id: 1,
           name: 'Orange 2k',
           comment: 'For juice',
-          bought: true
+          bought: true,
+          listId: 1
         }
-  
+
         const response = await ItemController.getItemById(item.id)
         const responseBody = response.data
-  
+
         // Verifying response is not undefined
         // eslint-disable-next-line no-unused-expressions
         expect(responseBody).to.not.be.undefined
-  
+
         // Verifying data properties within response
         expect(responseBody).to.have.property('id')
         expect(responseBody).to.have.property('name')
         expect(responseBody).to.have.property('comment')
         expect(responseBody).to.have.property('bought')
+        expect(responseBody).to.have.property('listId')
         // Verifying response data is equal to expected data
         expect(responseBody).to.be.eql(item)
-  
+
         await provider.verify()
       })
     })
