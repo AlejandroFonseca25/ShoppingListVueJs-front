@@ -2,7 +2,7 @@ class ShoppingList{
   private editButton: string;
   private deleteButton: string;
   private cancelButtonInTheDeletionAlert: string;
-  private deleteButtonInTheDeletionAlert: string;
+  private readonly deleteButtonInTheDeletionAlert: string;
   private homeButton: string;
   private readonly shoppingListName: string;
   private readonly numberOfItems: string;
@@ -27,6 +27,7 @@ class ShoppingList{
 
   public goToHome(){
     cy.get(this.homeButton).click();
+    cy.wait(2000);
   }
 
   public getShoppingListName(){
