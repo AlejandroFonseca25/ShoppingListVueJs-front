@@ -1,3 +1,4 @@
 export {ShoppingListList} from "./shopping.list.list";
-export {SimpleShoppingList} from "./simple.shopping.list";
+export {SimpleShoppingListAdd} from "./simple.shopping.list.add";
+export {SimpleShoppingListEdit} from "./simple.shopping.list.edit";
 export {ShoppingList} from "./shopping.list";

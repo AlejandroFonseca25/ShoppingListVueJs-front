@@ -19,7 +19,7 @@
 
 <script>
 import ErrorAlert from './ErrorAlert'
-import ShoppingListController from '../controller/ShoppingListController'
+import {ShoppingListController} from '../controller/ShoppingListController'
 
 export default {
   name: 'ShoppingList',

@@ -36,7 +36,7 @@ import AllListsButton from './AllListsButton'
 import BackToListButton from './BackToListButton'
 import FieldErrors from './classes/FieldErrors'
 import Item from './classes/Item'
-import ItemController from '../controller/ItemController'
+const ItemController = require('../controller/ItemController').ItemController
 
 export default {
   name: 'EditItem',

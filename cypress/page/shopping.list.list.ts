@@ -1,4 +1,4 @@
-import {SimpleShoppingList} from "../page/index";
+import {SimpleShoppingListAdd} from "../page/index";
 
 class ShoppingListList{
   private goToAddItemListButton: string;
@@ -9,7 +9,7 @@ class ShoppingListList{
   private readonly editShoppingListButton: string;
   private readonly deleteShoppingListButton: string;
 
-  private simpleShoppingList: SimpleShoppingList;
+  private simpleShoppingList: SimpleShoppingListAdd;
 
   constructor() {
     this.goToAddItemListButton = "[data-test='add-list-button']";
@@ -20,15 +20,18 @@ class ShoppingListList{
     this.deleteShoppingListButton = "a.btn.btn-danger.btn-sm";
     this.deleteButtonInTheDeletionAlert = ".dg-content-footer > .dg-btn.dg-btn--ok.dg-pull-right";
     this.cancelButtonInTheDeletionAlert = ".dg-content-footer > .dg-btn.dg-btn--cancel";
-    this.simpleShoppingList = new SimpleShoppingList();
+    this.simpleShoppingList = new SimpleShoppingListAdd();
   }
 
   public addShoppingList(shoppingListName: string){
     cy.get(this.goToAddItemListButton).click()
+    cy.wait(2000);
     this.simpleShoppingList.addShoppingList(shoppingListName);
+    cy.wait(2000);
   }
 
   public deleteLastShoppingList(){
+    cy.wait(2000);
     // @ts-ignore
     this.getLastShoppingList().then((lastList: JQuery<HTMLElement>) => {
       cy.wrap(lastList)
@@ -51,7 +54,6 @@ class ShoppingListList{
   }
 
   public getNumberOfShoppingLists() {
-    cy.log("llegue1")
     return new Cypress.Promise((resolve) => {
       cy.get(this.listOfShoppingLists)
         .find('li')
@@ -76,6 +78,10 @@ class ShoppingListList{
 
   public getCancelButtonInTheDeletionAlert(){
     return this.cancelButtonInTheDeletionAlert;
+  }
+
+  public getGoToAddItemListButton(){
+    return this.goToAddItemListButton;
   }
 }
 

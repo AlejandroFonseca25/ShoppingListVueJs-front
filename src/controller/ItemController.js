@@ -28,4 +28,4 @@ const ItemController = {
   }
 }
 
-module.exports = ItemController
+module.exports = {ItemController, axiosInstance}

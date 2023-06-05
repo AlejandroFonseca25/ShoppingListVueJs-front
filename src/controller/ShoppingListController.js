@@ -24,4 +24,4 @@ const ShoppingListController = {
   }
 }
 
-module.exports = ShoppingListController
+module.exports = {ShoppingListController, axiosInstance}
