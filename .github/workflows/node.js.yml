@@ -20,5 +20,6 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: Run tests
+        run: npm run test:unit
       - run: npm run cypress:headless
-      - run: npm run test:unit
+
