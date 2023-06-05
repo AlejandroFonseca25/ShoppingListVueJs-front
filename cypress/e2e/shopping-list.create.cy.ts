@@ -78,23 +78,24 @@ describe("Verifying the creation of a shopping list", () => {
     });
   });
 
-  // it('should show an error message when the text field is empty', () => {
-  //   let simpleShoppingListAdd = new SimpleShoppingListAdd();
-  //   let initialNumberOfShoppingList: any;
-  //   // let errorMessage = "must not be blank";
-  //   let errorMessage = "no puede estar vacío";
-  //   shoppingListList.getNumberOfShoppingLists().then((length) => {
-  //     initialNumberOfShoppingList = length;
-  //     cy.get(shoppingListList.getGoToAddItemListButton()).click()
-  //     cy.get(simpleShoppingListAdd.getShoppingListNameInput()).clear()
-  //     cy.get(simpleShoppingListAdd.getCreateShoppingListButton()).click()
-  //     cy.get(simpleShoppingListAdd.getErrorMessage()).should("contain.text", errorMessage);
-  //     simpleShoppingListAdd.goToHome();
-  //     let finalNumberOfShoppingList: any;
-  //     shoppingListList.getNumberOfShoppingLists().then((finalLength) => {
-  //       finalNumberOfShoppingList = finalLength;
-  //       assert.equal(initialNumberOfShoppingList, finalNumberOfShoppingList, "The shopping list that was recent added was not deleted")
-  //     });
-  //   });
-  // });
+  it('should show an error message when the text field is empty', () => {
+    let simpleShoppingListAdd = new SimpleShoppingListAdd();
+    let initialNumberOfShoppingList: any;
+    let errorMessage = "must not be blank";
+    // let errorMessage = "no puede estar vacío";
+    shoppingListList.getNumberOfShoppingLists().then((length) => {
+      initialNumberOfShoppingList = length;
+      cy.get(shoppingListList.getGoToAddItemListButton()).click()
+      cy.get(simpleShoppingListAdd.getShoppingListNameInput()).clear()
+      cy.wait(2000)
+      cy.get(simpleShoppingListAdd.getCreateShoppingListButton()).click()
+      cy.get(simpleShoppingListAdd.getErrorMessage()).should("contain.text", errorMessage);
+      simpleShoppingListAdd.goToHome();
+      let finalNumberOfShoppingList: any;
+      shoppingListList.getNumberOfShoppingLists().then((finalLength) => {
+        finalNumberOfShoppingList = finalLength;
+        assert.equal(initialNumberOfShoppingList, finalNumberOfShoppingList, "The shopping list that was recent added was not deleted")
+      });
+    });
+  });
 });
