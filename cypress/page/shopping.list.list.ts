@@ -31,12 +31,14 @@ class ShoppingListList{
   }
 
   public deleteLastShoppingList(){
+    cy.wait(2000);
     // @ts-ignore
     this.getLastShoppingList().then((lastList: JQuery<HTMLElement>) => {
       cy.wrap(lastList)
         .find(this.deleteShoppingListButton)
         .click();
     })
+    cy.wait(2000);
     cy.get(this.deleteButtonInTheDeletionAlert).click();
   }
 

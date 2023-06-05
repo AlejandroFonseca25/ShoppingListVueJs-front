@@ -65,9 +65,9 @@ describe("Verifying the creation of a shopping list", () => {
             cy.wrap(shoppingListCreated2).find(shoppingListList.getEditShoppingListButton());
             let finalNumberOfShoppingList: any;
             shoppingListList.deleteLastShoppingList();
-            cy.wait(4000);
+            cy.wait(2000);
             shoppingListList.deleteLastShoppingList();
-            cy.wait(4000);
+            cy.wait(2000);
             shoppingListList.getNumberOfShoppingLists().then((finalLength) => {
               finalNumberOfShoppingList = finalLength;
               assert.equal(initialNumberOfShoppingList, finalNumberOfShoppingList, "The shopping list that was recent added was not deleted")
