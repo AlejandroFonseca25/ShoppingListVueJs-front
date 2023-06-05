@@ -4,6 +4,70 @@
   },
   "interactions": [
     {
+      "description": "a request to get a item",
+      "providerState": "has item to get",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/item/1"
+      },
+      "response": {
+        "body": {
+          "bought": true,
+          "comment": "For juice",
+          "id": 1,
+          "name": "Orange 2k"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          },
+          "$.body.bought": {
+            "match": "type"
+          },
+          "$.body.comment": {
+            "match": "type"
+          },
+          "$.body.id": {
+            "match": "type"
+          },
+          "$.body.name": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request to update a item",
+      "providerState": "has item to update",
+      "request": {
+        "body": {
+          "comment": "For juice",
+          "listId": 1,
+          "name": "Orange 2kg"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body.comment": {
+            "match": "type"
+          },
+          "$.body.listId": {
+            "match": "type"
+          }
+        },
+        "method": "PUT",
+        "path": "/api/v1/item/1"
+      },
+      "response": {
+        "status": 204
+      }
+    },
+    {
       "description": "a request to delete a list",
       "providerState": "has list to delete",
       "request": {

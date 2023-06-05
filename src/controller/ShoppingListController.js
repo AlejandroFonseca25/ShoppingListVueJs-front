@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const axiosInstance = axios.create({baseURL: '/api/v1'})
+const axiosInstance = axios.create({baseURL: process.env.API_URL})
 
 const ShoppingListController = {
   createItemsList (nameParam) {

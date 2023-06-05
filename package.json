@@ -1,6 +1,6 @@
 {
   "name": "shopping-list-vue-js",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "ShoppingList Vue.js project",
   "author": "Aleksandr Rodionov <allrod@mail.ru>",
   "private": true,
@@ -11,8 +11,8 @@
     "cypress:headless": "cypress run",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
-    "test:contract": "mocha src/test/contract/**/*.test.js -r dotenv/config",
-    "publish:contract": "node src/test/contract/config/publish.js",
+    "test:contract:item": "mocha src/test/contract/specs/item/**/*.test.js -r dotenv/config",
+    "publish:contract:item": "node src/test/contract/config/publish.js",
     "lint": "eslint --ext .js,.vue src test/unit",
     "build": "node build/build.js"
   },
