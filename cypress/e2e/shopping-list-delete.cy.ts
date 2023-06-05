@@ -22,6 +22,7 @@ describe("Verifying the deletion of a shopping list", () => {
     shoppingListList.getNumberOfShoppingLists().then((length) => {
       initialNumberOfShoppingList = length;
       shoppingListList.deleteLastShoppingList();
+      cy.wait(2000);
       let finalNumberOfShoppingList: any;
       shoppingListList.getNumberOfShoppingLists().then((finalLength) => {
         finalNumberOfShoppingList = finalLength;
@@ -50,6 +51,7 @@ describe("Verifying the deletion of a shopping list", () => {
       });
     });
     shoppingListList.deleteLastShoppingList();
+    cy.wait(2000);
   })
 
   it("should delete a list when the user enters the shopping list page", () => {

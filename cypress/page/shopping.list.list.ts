@@ -38,7 +38,6 @@ class ShoppingListList{
         .click();
     })
     cy.get(this.deleteButtonInTheDeletionAlert).click();
-    cy.wait(2000);
   }
 
   public getLastShoppingList(){
