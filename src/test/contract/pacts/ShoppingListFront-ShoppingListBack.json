@@ -4,6 +4,17 @@
   },
   "interactions": [
     {
+      "description": "a request to delete an item",
+      "providerState": "has items to delete",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/v1/item/1"
+      },
+      "response": {
+        "status": 204
+      }
+    },
+    {
       "description": "a request to delete a list",
       "providerState": "has list to delete",
       "request": {
@@ -114,6 +125,57 @@
           }
         },
         "status": 200
+      }
+    },
+    {
+      "description": "a request to add an item",
+      "providerState": "there are no items",
+      "request": {
+        "body": {
+          "comment": "Fresh parmesan cheese",
+          "listId": 1,
+          "name": "Cheese"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          },
+          "$.body.comment": {
+            "match": "type"
+          },
+          "$.body.listId": {
+            "match": "type"
+          },
+          "$.body.name": {
+            "match": "type"
+          }
+        },
+        "method": "POST",
+        "path": "/api/v1/item"
+      },
+      "response": {
+        "body": {
+          "id": 45326,
+          "listId": 1
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          },
+          "$.body.id": {
+            "match": "type"
+          },
+          "$.body.listId": {
+            "match": "type"
+          }
+        },
+        "status": 201
       }
     },
     {

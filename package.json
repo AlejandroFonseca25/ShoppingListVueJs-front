@@ -11,6 +11,8 @@
     "cypress:headless": "cypress run",
     "test:unit": "mocha src/test/unit/**/*.test.js",
     "test:contract": "mocha src/test/contract/**/*.test.js -r dotenv/config",
+    "test:contract:item": "mocha src/test/contract/specs/item/*.test.js -r dotenv/config",
+    "test:contract:itemsList": "mocha src/test/contract/specs/itemsList/*.test.js -r dotenv/config",
     "publish:contract": "node src/test/contract/config/publish.js",
     "lint": "eslint --ext .js,.vue src test/unit",
     "build": "node build/build.js"
