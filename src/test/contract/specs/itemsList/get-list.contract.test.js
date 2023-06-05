@@ -1,6 +1,6 @@
 const provider = require('../../config/init-pact')
 const { Matchers } = require('@pact-foundation/pact')
-const ShoppingListController = require('../../../../controller/ShoppingListController')
+const ShoppingListController = require('../../../../controller/ShoppingListController').ShoppingListController
 const { expect } = require('chai')
 
 // eslint-disable-next-line no-undef

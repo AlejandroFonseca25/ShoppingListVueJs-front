@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const axiosInstance = axios.create({baseURL: '/api/v1'})
+const axiosInstance = axios.create({baseURL: 'http://localhost:8090/api/v1'})
 
 const ShoppingListController = {
   createItemsList (nameParam) {
@@ -24,4 +24,4 @@ const ShoppingListController = {
   }
 }
 
-module.exports = ShoppingListController
+module.exports = {ShoppingListController, axiosInstance}

@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const axiosInstance = axios.create({baseURL: '/api/v1'})
+const axiosInstance = axios.create({baseURL: 'http://localhost:8090/api/v1'})
 
 const ItemController = {
   createItem (nameParam, commentParam, listIdParam) {

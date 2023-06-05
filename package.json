@@ -9,7 +9,7 @@
     "start": "npm run dev",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
-    "test:unit": "mocha test/unit/**/*.test.js",
+    "test:unit": "mocha src/test/unit/**/*.test.js",
     "test:contract": "mocha src/test/contract/**/*.test.js -r dotenv/config",
     "publish:contract": "node src/test/contract/config/publish.js",
     "lint": "eslint --ext .js,.vue src test/unit",
