@@ -12,8 +12,8 @@ class SimpleShoppingList {
   }
 
   public addShoppingList(shoppingListName: string){
-    console.log(shoppingListName)
-    cy.get(this.shoppingListNameInput).type(shoppingListName)
+    cy.wait(2000);
+    cy.get(this.shoppingListNameInput).clear().type(shoppingListName)
     cy.wait(2000);
     cy.get(this.createShoppingListButton).click()
   }
@@ -31,7 +31,8 @@ class SimpleShoppingList {
   }
 
   public editShoppingList(newName:string){
-    cy.get(this.getShoppingListNameInput()).clear().type(newName);
+    cy.wait(2000);
+    cy.get(this.shoppingListNameInput).clear().type(newName);
     cy.wait(2000);
   }
 
