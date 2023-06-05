@@ -9,8 +9,6 @@
     "start": "npm run dev",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
-    "unit": "jest --config test/unit/jest.conf.js --coverage",
-    "test": "npm run unit",
     "test:contract": "mocha src/test/contract/**/*.test.js -r dotenv/config",
     "publish:contract": "node src/test/contract/config/publish.js",
     "lint": "eslint --ext .js,.vue src test/unit",
