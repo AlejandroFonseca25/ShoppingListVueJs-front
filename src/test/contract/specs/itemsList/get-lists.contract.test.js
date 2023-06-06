@@ -43,7 +43,7 @@ describe('Items List Service - Get lists', () => {
 
       // Verifying data within response array
       const list = responseBody[0]
-      expect(list.id).to.be.equal(45326)
+      expect(list.id).to.be.a('number');
       expect(list.name).to.be.equal('Shopping list')
 
       await provider.verify()

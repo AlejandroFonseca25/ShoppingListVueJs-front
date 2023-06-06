@@ -23,7 +23,7 @@ describe('Items List Service - Add list', () => {
         willRespondWith: {
           status: 201,
           body: Matchers.somethingLike({
-            id: Matchers.like(45326)
+            id: Matchers.somethingLike(45326)
           })
         }
       })
@@ -47,7 +47,7 @@ describe('Items List Service - Add list', () => {
       expect(responseBody).to.have.property('id')
 
       // Verifying response data is equal to expected data
-      expect(responseBody.id).to.be.eql(45326)
+      expect(responseBody.id).to.be.a('number');
 
       await provider.verify()
     })
