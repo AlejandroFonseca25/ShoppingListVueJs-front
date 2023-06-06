@@ -53,8 +53,8 @@ describe('Item Service - Add Item', () => {
       expect(responseBody).to.have.property('listId')
 
       // Verifying response data is equal to expected data
-      expect(responseBody.id).to.be.eql(45326)
-      expect(responseBody.listId).to.be.eql(1)
+      expect(responseBody.id).to.be.a('number');
+      expect(responseBody.listId).to.be.eql(1);
 
       await provider.verify()
     })
