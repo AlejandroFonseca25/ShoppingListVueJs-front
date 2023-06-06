@@ -3,18 +3,21 @@ import {ShoppingList} from "../page/index";
 import {SimpleItemAdd} from "../page/index";
 
 let shoppingListList: ShoppingListList;
-const endpoint = "http://localhost:8091/#/";
+let shoppingList = new ShoppingList();
+let simpleItemAdd = new SimpleItemAdd();
+const endpoint = "https://polite-bush-05fb25610.3.azurestaticapps.net";
 describe("Verifying the creation of a item", () => {
 
     beforeEach(() => {
       cy.visit(endpoint);
       shoppingListList = new ShoppingListList();
+      shoppingList = new ShoppingList();
+      simpleItemAdd = new SimpleItemAdd();
+    
       cy.wait(2000);
     });
   
-    it("should create a item successfully with name and comment", async () => {
-        let shoppingList = new ShoppingList();
-        let simpleItemAdd = new SimpleItemAdd();
+    it("should create a item successfully with name and comment",  () => {
         let shoppingListName = "Shopping list test"
         shoppingListList.addShoppingList(shoppingListName);
         let shoppingListCreated: any;
@@ -39,15 +42,11 @@ describe("Verifying the creation of a item", () => {
                     let numberOfItemListAfterAdd = num;
                     assert.equal(initialNumberOfItemList + 1, numberOfItemListAfterAdd, "The item was not added");
                     shoppingList.deleteLastListGroupItem();
-                    shoppingList.goToHome();
-                    shoppingListList.deleteLastShoppingList();
                 });
             });
         });    
     });
-    it("should create a item successfully with name", async () => {
-        let shoppingList = new ShoppingList();
-        let simpleItemAdd = new SimpleItemAdd();
+    it("should create a item successfully with name",  () => {
         let shoppingListName = "Shopping list test"
         shoppingListList.addShoppingList(shoppingListName);
         let shoppingListCreated: any;
@@ -72,16 +71,12 @@ describe("Verifying the creation of a item", () => {
                     let numberOfItemListAfterAdd = num;
                     assert.equal(initialNumberOfItemList + 1, numberOfItemListAfterAdd, "The item was not added");
                     shoppingList.deleteLastListGroupItem();
-                    shoppingList.goToHome();
-                    shoppingListList.deleteLastShoppingList();
                 });
             });
         });    
     });
 
-    it("should create a item successfully even when the item name is repeated", async () => {
-        let shoppingList = new ShoppingList();
-        let simpleItemAdd = new SimpleItemAdd();
+    it("should create a item successfully even when the item name is repeated",  () => {
         let shoppingListName = "Shopping list test"
         shoppingListList.addShoppingList(shoppingListName);
         let shoppingListCreated: any;
@@ -113,18 +108,13 @@ describe("Verifying the creation of a item", () => {
                     shoppingList.deleteLastListGroupItem();
                     cy.wait(2000);  
                     shoppingList.deleteLastListGroupItem();
-                    shoppingList.goToHome();
-                    shoppingListList.deleteLastShoppingList();
-                
                 });
             });
         });    
     });
 
-    it('should show an error message when the text field is empty', () => {
-        let shoppingList = new ShoppingList();
-        let simpleItemAdd = new SimpleItemAdd();
-        let errorMessage = "no puede estar vacío";
+    it('should show an error message when the text field is empty',  () => {
+        let errorMessage = "must not be blank";
         let shoppingListName = "Shopping list test"
         shoppingListList.addShoppingList(shoppingListName);
         let shoppingListCreated: any;
@@ -152,13 +142,15 @@ describe("Verifying the creation of a item", () => {
                 shoppingList.getNumberOfItems().then((num) => {
                     let numberOfItemListAfterAdd = num;
                     assert.equal(initialNumberOfItemList , numberOfItemListAfterAdd, "The item was not added");
-                    shoppingList.goToHome();
-                    shoppingListList.deleteLastShoppingList();
                 });
             });
 
         });
 
+      });
+      afterEach(() => {
+        shoppingList.goToHome();
+        shoppingListList.deleteLastShoppingList();
       });
   
   });

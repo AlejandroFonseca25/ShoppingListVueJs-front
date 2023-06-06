@@ -58,6 +58,28 @@ class ItemDetails {
   public getDeleteButtonInTheDeletionAlert(){
     return this.deleteButtonInTheDeletionAlert;
   }
+  getItemNameFromItemPage() {
+    return new Cypress.Promise((resolve) => {
+      cy.get(this.itemNameTitle).invoke('text').then((itemName) => {
+        resolve(itemName);
+      });
+    });
+  }
+
+  getItemCommentFromItemPage() {
+    return new Cypress.Promise((resolve) => {
+      cy.get(this.itemComment).invoke('text').then((comment) => {
+        resolve(comment);
+      });
+    });
+  }
+  getItemBadgeFromItemPage() {
+    return new Cypress.Promise((resolve) => {
+      cy.get(this.isBought).invoke('text').then((badge) => {
+        resolve(badge);
+      });
+    });
+  }
 }
 
 export {ItemDetails}

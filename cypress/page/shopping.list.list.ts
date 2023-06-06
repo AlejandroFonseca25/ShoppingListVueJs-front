@@ -1,4 +1,4 @@
-import {SimpleShoppingListAdd} from "../page/index";
+import {ShoppingList, SimpleItemAdd, SimpleShoppingListAdd, SimpleShoppingListEdit} from "../page/index";
 
 class ShoppingListList{
   private goToAddItemListButton: string;
@@ -10,6 +10,8 @@ class ShoppingListList{
   private readonly deleteShoppingListButton: string;
 
   private simpleShoppingList: SimpleShoppingListAdd;
+  private shoppingList: ShoppingList;
+  private simpleItem: SimpleItemAdd;
 
   constructor() {
     this.goToAddItemListButton = "[data-test='add-list-button']";
@@ -21,12 +23,29 @@ class ShoppingListList{
     this.deleteButtonInTheDeletionAlert = ".dg-content-footer > .dg-btn.dg-btn--ok.dg-pull-right";
     this.cancelButtonInTheDeletionAlert = ".dg-content-footer > .dg-btn.dg-btn--cancel";
     this.simpleShoppingList = new SimpleShoppingListAdd();
+    this.simpleItem = new SimpleItemAdd();
+    this.shoppingList = new ShoppingList();
   }
 
   public addShoppingList(shoppingListName: string){
     cy.get(this.goToAddItemListButton).click()
     cy.wait(2000);
     this.simpleShoppingList.addShoppingList(shoppingListName);
+    cy.wait(2000);
+  }
+
+  public addItem(itemName: string,itemComment: string){
+    cy.wait(2000);
+    // @ts-ignore
+    this.getLastShoppingList().then((lastList: JQuery<HTMLElement>) => {
+      cy.wrap(lastList)
+        .find(this.goToShoppingListButton)
+        .click();
+    })
+    cy.wait(2000);
+    this.shoppingList.addItem();
+    cy.wait(2000);
+    this.simpleItem.addItem(itemName,itemComment);
     cy.wait(2000);
   }
 

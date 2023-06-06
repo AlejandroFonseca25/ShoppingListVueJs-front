@@ -9,12 +9,12 @@
         <div class="row">
           <div class="col-md-7">
             <router-link data-test="item-name" v-bind:to="{ path: '/item/' + item.id }">{{ item.name }}</router-link>
-            <small class="clearfix" v-if="item.comment">{{ item.comment }}</small>
+            <small data-test="item-comment" class="clearfix" v-if="item.comment">{{ item.comment }}</small>
           </div>
           <div class="col-md-5">
             <ul class="list-inline text-right">
               <li class="list-inline-item">
-                <a href="#" @click.prevent="buy(item.id, index)" class="badge badge-success" role="button">
+                <a href="#" @click.prevent="buy(item.id, index)" data-test="buy-item" class="badge badge-success" role="button">
                   {{ item.bought ? 'Take out' : 'Buy' }}
                 </a>
               </li>

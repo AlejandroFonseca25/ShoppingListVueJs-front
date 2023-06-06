@@ -4,8 +4,8 @@ class SimpleItemAdd{
   private readonly errorMessage: string
   private readonly itemNameInput: string;
   private readonly itemCommentInput: string;
-  
-    constructor() {
+
+  constructor() {
         this.createItemButton = "[data-test='add-item-btn']";
         this.errorMessage = "[data-test='name-error-message']";
         this.itemNameInput = "[data-test='name-item']";
@@ -33,7 +33,7 @@ class SimpleItemAdd{
       public getItemCommentInput(){
         return this.itemCommentInput;
       }
-    
+
       public getCreateItemButton(){
         return this.createItemButton;
       }
@@ -43,5 +43,5 @@ class SimpleItemAdd{
       }
       
   }
-  
+
   export {SimpleItemAdd}
