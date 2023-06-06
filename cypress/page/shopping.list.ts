@@ -37,10 +37,6 @@ class ShoppingList{
     cy.get(this.deleteItemButton).click()
   }
 
-  public d(){
-    cy.get(this.addItemButton).click()
-  }
-
   public editShoppingList(){
     cy.get(this.editButton).click()
   }
