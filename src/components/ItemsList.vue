@@ -8,7 +8,7 @@
       <div class="list-group-item" v-for="(item, index) in this.list.items" v-bind:key="item.id" v-bind:class="{ 'list-group-item-success': item.bought }">
         <div class="row">
           <div class="col-md-7">
-            <router-link v-bind:to="{ path: '/item/' + item.id }">{{ item.name }}</router-link>
+            <router-link data-test="item-name" v-bind:to="{ path: '/item/' + item.id }">{{ item.name }}</router-link>
             <small class="clearfix" v-if="item.comment">{{ item.comment }}</small>
           </div>
           <div class="col-md-5">
@@ -19,10 +19,10 @@
                 </a>
               </li>
               <li class="list-inline-item">
-                <router-link v-bind:to="{ path: '/editItem/' + item.id }" class="badge badge-warning" role="button">Edit</router-link>
+                <router-link data-test="edit-item" v-bind:to="{ path: '/editItem/' + item.id }" class="badge badge-warning" role="button">Edit</router-link>
               </li>
               <li class="list-inline-item">
-                <a href="#" class="badge badge-danger" role="button" @click.prevent="confirmDeleteItem(item.id, index)">Delete</a>
+                <a href="#" data-test="delete-item" class="badge badge-danger" role="button" @click.prevent="confirmDeleteItem(item.id, index)">Delete</a>
               </li>
             </ul>
           </div>
@@ -31,7 +31,7 @@
     </div>
     <ul class="list-inline">
       <li class="list-inline-item">
-        <router-link v-bind:to="{ path: '/addItem/' + this.listId }" class="btn btn-success btn-sm" role="button" data-toggle="tooltip" data-placement="bottom" title="Add a new item">
+        <router-link data-test='add-item-button' v-bind:to="{ path: '/addItem/' + this.listId }" class="btn btn-success btn-sm" role="button" data-toggle="tooltip" data-placement="bottom" title="Add a new item">
           <span class="oi oi-plus"></span>
         </router-link>
       </li>
