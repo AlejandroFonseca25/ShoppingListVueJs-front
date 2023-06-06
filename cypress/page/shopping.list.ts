@@ -76,7 +76,7 @@ class ShoppingList{
     cy.get(this.deleteButtonInTheDeletionAlert).click();
   }
 
-  public getNumberOfItems(): Promise<number> {
+  public getNumberOfItemsValue(): Promise<number> {
     return new Cypress.Promise((resolve) => {
       cy.get(this.numberOfItems)
         .invoke('text')
@@ -135,6 +135,9 @@ class ShoppingList{
 
   public getItemRow(){
     return cy.get(this.itemRow);
+  }
+  public getNumberOfItems(){
+    return this.numberOfItems;
   }
 }
 
