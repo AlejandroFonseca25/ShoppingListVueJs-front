@@ -66,6 +66,10 @@ class ShoppingList{
     return this.deleteButtonInTheDeletionAlert;
   }
 
+  public getCancelButtonInTheDeletionAlert(){
+    return this.cancelButtonInTheDeletionAlert;
+  }
+
   public getItemName(){
     return cy.get(this.itemName);
   }
