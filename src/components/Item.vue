@@ -4,14 +4,14 @@
 
     <div v-if="loading">Loading...</div>
     <div class="list-group" v-else>
-      <h1 v-text="this.item.name" class="list-group-item list-group-item-info"></h1>
+      <h1 data-test="item-name" v-text="this.item.name" class="list-group-item list-group-item-info"></h1>
       <div class="list-group-item">
         <div class="row">
           <div class="col-md-7">
             <strong>ID</strong>
           </div>
           <div class="col-md-5">
-            <strong v-text="itemId"></strong>
+            <strong data-test="item-id" v-text="itemId"></strong>
           </div>
         </div>
       </div>
@@ -21,7 +21,7 @@
             <strong>Comment</strong>
           </div>
           <div class="col-md-5">
-            <em v-text="this.item.comment"></em>
+            <em data-test="item-comment" v-text="this.item.comment"></em>
           </div>
         </div>
       </div>
@@ -31,7 +31,7 @@
             <strong>Bought</strong>
           </div>
           <div class="col-md-5">
-            <strong>{{ this.item.bought ? 'Yes' : 'No' }}</strong>
+            <strong data-test="item-bought">{{ this.item.bought ? 'Yes' : 'No' }}</strong>
           </div>
         </div>
       </div>
@@ -40,12 +40,12 @@
       <back-to-list-button v-bind:list-id="this.item.listId"/>
       <all-lists-button/>
       <li class="list-inline-item">
-        <router-link v-bind:to="{ path: '/editItem/' + itemId }" class="btn btn-warning btn-sm" role="button" data-toggle="tooltip" data-placement="bottom" title="Edit item">
+        <router-link data-test="edit-item" v-bind:to="{ path: '/editItem/' + itemId }" class="btn btn-warning btn-sm" role="button" data-toggle="tooltip" data-placement="bottom" title="Edit item">
           <span class="oi oi-pencil"></span>
         </router-link>
       </li>
       <li class="list-inline-item">
-        <a href="#" class="btn btn-danger btn-sm" role="button" data-toggle="tooltip" data-placement="bottom" title="Delete item" @click.prevent="confirmDeleteItem(itemId)">
+        <a href="#" data-test="delete-item" class="btn btn-danger btn-sm" role="button" data-toggle="tooltip" data-placement="bottom" title="Delete item" @click.prevent="confirmDeleteItem(itemId)">
           <span class="oi oi-x"></span>
         </a>
       </li>
