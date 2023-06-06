@@ -1,7 +1,7 @@
 const { Matchers } = require('@pact-foundation/pact')
 const { expect } = require('chai')
 const provider = require('../../config/init-pact')
-const ItemController = require('../../../../controller/ItemController')
+const ItemController = require('../../../../controller/ItemController').ItemController
 
 // eslint-disable-next-line no-undef
 describe('Item Service - Delete Item', () => {
