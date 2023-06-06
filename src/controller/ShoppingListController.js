@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const axiosInstance = axios.create({baseURL: 'https://shopping-list-back.azurewebsites.net/api/v1'})
+const axiosInstance = axios.create({baseURL: 'https://shopping-list-back.azurewebsites.net /api/v1'})
 
 const ShoppingListController = {
   createItemsList (nameParam) {
