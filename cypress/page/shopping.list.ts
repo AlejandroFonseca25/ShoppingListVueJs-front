@@ -7,12 +7,14 @@ class ShoppingList{
   private homeButton: string;
   private readonly shoppingListName: string;
   private readonly numberOfItems: string;
+  private readonly itemsList: string;
   private itemName: string;
   private editItemButton: string;
   private deleteItemButton: string;
 
   constructor() {
     this.shoppingListName = "[data-test='shopping-list-name']";
+    this.itemsList = "[data-test='list-group-items']";
     this.addItemButton = "[data-test='add-item-button']"
     this.editButton = "[data-test='edit-button']";
     this.deleteButton = "[data-test='delete-button']";
@@ -54,12 +56,45 @@ class ShoppingList{
     return this.shoppingListName;
   }
 
-  public getNumberOfItems(){
-    return this.numberOfItems;
+  public deleteLastListGroupItem() {
+    cy.wait(2000);
+    // @ts-ignore
+    this.getLastListGroupItem().then((lastItem: JQuery<HTMLElement>) => {
+      cy.wrap(lastItem)
+        .find(this.deleteItemButton)
+        .click();
+    })
+    cy.wait(2000);
+    cy.get(this.deleteButtonInTheDeletionAlert).click();
+  }
+
+  public getNumberOfItems(): Promise<number> {
+    return new Cypress.Promise((resolve) => {
+      cy.get(this.numberOfItems)
+        .invoke('text')
+        .then((text) => {
+          resolve(parseInt(text));
+        });
+    });
+  }
+
+  public getLastListGroupItem() {
+    return new Cypress.Promise((resolve) => {
+      cy.get(this.itemsList)
+        .find('.list-group-item')
+        .eq(-1)
+        .then((lastItem) => {
+          resolve(lastItem);
+        });
+    });
   }
 
   public getDeleteButtonInTheDeletionAlert(){
     return this.deleteButtonInTheDeletionAlert;
+  }
+
+  public getAddItemButton(){
+    return this.addItemButton;
   }
 }
 

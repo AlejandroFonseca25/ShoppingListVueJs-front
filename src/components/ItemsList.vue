@@ -3,7 +3,7 @@
     <error-alert v-if="error" v-bind:message="message"/>
 
     <div v-if="loading">Loading...</div>
-    <div class="list-group" v-else>
+    <div class="list-group" data-test="list-group-items" v-else>
       <h1 class="list-group-item list-group-item-info" data-test='shopping-list-name'>{{ this.list.name }} <span class="badge badge-light" data-test='number-of-items'>{{ this.list.items.length }}</span></h1>
       <div class="list-group-item" v-for="(item, index) in this.list.items" v-bind:key="item.id" v-bind:class="{ 'list-group-item-success': item.bought }">
         <div class="row">
