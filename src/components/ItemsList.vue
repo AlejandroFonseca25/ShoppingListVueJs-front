@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col-md-7">
             <router-link data-test="item-name" v-bind:to="{ path: '/item/' + item.id }">{{ item.name }}</router-link>
-            <small class="clearfix" v-if="item.comment">{{ item.comment }}</small>
+            <small data-test="item-comment" class="clearfix" v-if="item.comment">{{ item.comment }}</small>
           </div>
           <div class="col-md-5">
             <ul class="list-inline text-right">
