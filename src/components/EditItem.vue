@@ -7,19 +7,19 @@
       <div class="form-group">
         <label for="name" class="col-sm-2 control-label">Name:</label>
         <div class="col-sm-6">
-          <input type="text" id="name" name="name" v-model="item.name" class="form-control"/>
-          <small v-if="fieldErrors.has('name')" class="text-danger" v-text="fieldErrors.get('name')"></small>
+          <input data-test="name-item-input" type="text" id="name" name="name" v-model="item.name" class="form-control"/>
+          <small data-test="name-error-message" v-if="fieldErrors.has('name')" class="text-danger" v-text="fieldErrors.get('name')"></small>
         </div>
       </div>
       <div class="form-group">
         <label for="comment" class="col-sm-2 control-label">Comment:</label>
         <div class="col-sm-6">
-          <textarea id="comment" name="comment" v-model="item.comment" rows="3" class="form-control"></textarea>
+          <textarea data-test="comment-item-input" id="comment" name="comment" v-model="item.comment" rows="3" class="form-control"></textarea>
         </div>
       </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <input type="submit" value="Update item" class="btn btn-outline-secondary" :disabled="fieldErrors.any()"/>
+          <input data-test="update-item-btn" type="submit" value="Update item" class="btn btn-outline-secondary" :disabled="fieldErrors.any()"/>
         </div>
       </div>
     </form>
