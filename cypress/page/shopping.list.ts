@@ -98,6 +98,7 @@ class ShoppingList{
   }
 
   public clickItemNameInLastItem() {
+    cy.wait(2000);
     this.getLastListGroupItem().then((lastItem) => {
       cy.wrap(lastItem)
         .find(this.itemName)
@@ -120,7 +121,7 @@ class ShoppingList{
   public getAddItemButton(){
     return this.addItemButton;
   }
-  
+
   public getCancelButtonInTheDeletionAlert(){
     return this.cancelButtonInTheDeletionAlert;
   }
