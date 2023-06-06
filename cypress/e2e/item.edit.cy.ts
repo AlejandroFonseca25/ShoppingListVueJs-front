@@ -69,7 +69,7 @@ describe("Verifying the edition of a shopping list item", () => {
 
   it('should show an error when the name field is empty', () => {
     let shoppingListCreated: any;
-    let errorMessage = "no puede estar vacío";
+    let errorMessage = "must not be blank";
     shoppingListList.getLastShoppingList().then((lastShoppingList) => {
       shoppingListCreated = lastShoppingList;
       cy.wrap(shoppingListCreated).find(shoppingListList.getGoToShoppingListButton())
