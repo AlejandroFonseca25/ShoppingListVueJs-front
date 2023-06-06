@@ -1,9 +1,11 @@
-import {ShoppingListList, ShoppingList,
-  ItemDetails, SimpleItemEdit, SimpleItemAdd, SimpleShoppingListAdd} from "../page/index";
+import {
+  ShoppingListList, ShoppingList,
+  ItemDetails, SimpleItemEdit
+} from "../page";
 
 
 let shoppingListList: ShoppingListList;
-const endpoint = "http://localhost:8091/#/";
+const endpoint = "https://polite-bush-05fb25610.3.azurestaticapps.net";
 
 describe("Verifying the edition of a shopping list item", () => {
 
@@ -12,6 +14,7 @@ describe("Verifying the edition of a shopping list item", () => {
   let itemComment = "Epic mozzarella cheese"
   let shoppingList: ShoppingList;
   let simpleItemEdit: SimpleItemEdit;
+  let itemDetails: ItemDetails;
 
   beforeEach(() => {
     cy.visit(endpoint);
@@ -19,6 +22,7 @@ describe("Verifying the edition of a shopping list item", () => {
     shoppingListList = new ShoppingListList();
     shoppingList = new ShoppingList();
     simpleItemEdit = new SimpleItemEdit();
+    itemDetails = new ItemDetails();
     shoppingListList.addShoppingList(shoppingListName);
     shoppingListList.addItem(itemName, itemComment);
     shoppingList.goToHome();
@@ -29,7 +33,7 @@ describe("Verifying the edition of a shopping list item", () => {
     shoppingListList.deleteLastShoppingList();
   });
 
-  it('should edit an item name and comment successfully', () => {
+  it('should edit an item name and comment through the item list', () => {
     let shoppingListCreated: any;
     shoppingListList.getLastShoppingList().then((lastShoppingList) => {
       shoppingListCreated = lastShoppingList;
@@ -38,77 +42,64 @@ describe("Verifying the edition of a shopping list item", () => {
       cy.wait(2000);
       shoppingList.editItem();
       cy.wait(2000);
-      simpleItemEdit.updateItem("Bubblegum","Chewy blueberry bubblegum");
-      shoppingList.getItemName().should("have.text","Bubblegum");
-      shoppingList.getItemComment().should("have.text","Chewy blueberry bubblegum");
+      simpleItemEdit.updateItem("Bubblegum", "Chewy blueberry bubblegum");
+      shoppingList.getItemName().should("have.text", "Bubblegum");
+      shoppingList.getItemComment().should("have.text", "Chewy blueberry bubblegum");
       cy.wait(2000);
     });
   });
 
-  /*it('should edit an item name and remove the comment successfully', () => {
+  it('should edit an item name and comment through the item details', () => {
     let shoppingListCreated: any;
     shoppingListList.getLastShoppingList().then((lastShoppingList) => {
       shoppingListCreated = lastShoppingList;
       cy.wrap(shoppingListCreated).find(shoppingListList.getGoToShoppingListButton())
         .click();
       cy.wait(2000);
-      shoppingList.editItem();
+      shoppingList.getItemName().click();
       cy.wait(2000);
-      simpleItemEdit.updateItem("Pinneaple","");
-      shoppingList.getItemName().should("have.text","Bubblegum");
-      shoppingList.getItemRow().should("")
+      itemDetails.editItem();
       cy.wait(2000);
-    });
-  });*/
-
-  /*it('should successfully edit a list when the user enters the shopping list page', () => {
-    let shoppingList = new ShoppingList();
-    let shoppingListCreated: any;
-    shoppingListList.getLastShoppingList().then((lastShoppingList) => {
-      shoppingListCreated = lastShoppingList;
-      cy.wrap(shoppingListCreated).find(shoppingListList.getGoToShoppingListButton())
-        .click();
-      cy.get(shoppingList.getShoppingListName()).should("contain.text", shoppingListName);
-      cy.get(shoppingList.getNumberOfItems()).should("contain.text", 0);
-      shoppingList.editShoppingList();
-      let shoppingListNameEdited = shoppingListName + " edited";
-      simpleShoppingList.editShoppingList(shoppingListNameEdited);
-      cy.get(simpleShoppingList.getTitleInEditShoppingList()).should("contain.text", "Edit "+shoppingListNameEdited);
-      cy.get(simpleShoppingList.getUpdateShoppingListButton()).click();
-      shoppingListList.getLastShoppingList().then((lastShoppingListAfterEditing) => {
-        cy.wrap(lastShoppingListAfterEditing).find(shoppingListList.getGoToShoppingListButton())
-          .should("contain.text", shoppingListNameEdited);
-        cy.wrap(lastShoppingListAfterEditing).find(shoppingListList.getDeleteShoppingListButton());
-        cy.wrap(lastShoppingListAfterEditing).find(shoppingListList.getEditShoppingListButton());
-        cy.wrap(lastShoppingListAfterEditing).find(shoppingListList.getGoToShoppingListButton())
-          .click();
-        cy.get(shoppingList.getShoppingListName()).should("contain.text", shoppingListNameEdited);
-        cy.get(shoppingList.getNumberOfItems()).should("contain.text", 0);
-        shoppingList.goToHome();
-      });
+      simpleItemEdit.updateItem("Bubblegum", "Chewy blueberry bubblegum");
+      shoppingList.getItemName().should("have.text", "Bubblegum");
+      shoppingList.getItemComment().should("have.text", "Chewy blueberry bubblegum");
+      cy.wait(2000);
     });
   });
 
-  it('should show an error message when the text field is empty', () => {
+  it('should show an error when the name field is empty', () => {
+    let shoppingListCreated: any;
     let errorMessage = "must not be blank";
-    // let errorMessage = "no puede estar vacío";
+    shoppingListList.getLastShoppingList().then((lastShoppingList) => {
+      shoppingListCreated = lastShoppingList;
+      cy.wrap(shoppingListCreated).find(shoppingListList.getGoToShoppingListButton())
+        .click();
+      cy.wait(2000);
+      shoppingList.getItemName().click();
+      cy.wait(2000);
+      itemDetails.editItem();
+      cy.wait(2000);
+      simpleItemEdit.updateItem("", "Special pepperoni pizza");
+      simpleItemEdit.getErrorMessage().should("contain.text", errorMessage);
+      cy.wait(2000);
+      simpleItemEdit.goBack();
+      cy.wait(2000);
+    });
+  });
+
+  it('should edit an item name and remove the comment', () => {
     let shoppingListCreated: any;
     shoppingListList.getLastShoppingList().then((lastShoppingList) => {
       shoppingListCreated = lastShoppingList;
       cy.wrap(shoppingListCreated).find(shoppingListList.getGoToShoppingListButton())
-        .should("contain.text", shoppingListName);
-      cy.wait(2000)
-      cy.wrap(shoppingListCreated).find(shoppingListList.getEditShoppingListButton())
         .click();
-      cy.get(simpleShoppingList.getShoppingListNameInput()).clear()
-      cy.wait(2000)
-      cy.get(simpleShoppingList.getUpdateShoppingListButton()).click()
-      cy.get(simpleShoppingList.getErrorMessage()).should("contain.text", errorMessage);
-      simpleShoppingList.goToHome();
-      shoppingListList.getLastShoppingList().then((lastShoppingListAfter) => {
-        cy.wrap(lastShoppingListAfter).find(shoppingListList.getGoToShoppingListButton())
-          .should("contain.text", shoppingListName);
-      });
+      cy.wait(2000);
+      shoppingList.editItem();
+      cy.wait(2000);
+      simpleItemEdit.updateItem("Pineapple", "");
+      shoppingList.getItemName().should("have.text", "Pineapple");
+      shoppingList.getItemRow().should("not.have.descendants", "small")
+      cy.wait(2000);
     });
-  });*/
+  });
 });
