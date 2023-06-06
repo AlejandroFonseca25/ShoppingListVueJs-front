@@ -19,6 +19,11 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
-      - name: Run tests
+      - name: Run Unit Tests
         run: npm run test:unit
+      - name: Run Contract Tests
+        env:
+          API_URL: http://127.0.0.1:8091/api/v1
+        run: npm run test:contract
+          
 
