@@ -85,6 +85,7 @@ describe("Verifying the edition of a shopping list", () => {
       cy.wait(2000)
       cy.wrap(shoppingListCreated).find(shoppingListList.getEditShoppingListButton())
         .click();
+      cy.wait(2000)
       cy.get(simpleShoppingList.getShoppingListNameInput()).clear()
       cy.wait(2000)
       cy.get(simpleShoppingList.getUpdateShoppingListButton()).click()
