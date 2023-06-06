@@ -5,7 +5,7 @@ import {ItemDetails} from "../page/index";
 let shoppingListList: ShoppingListList;
 let shoppingList = new ShoppingList();
 let itemDetails = new ItemDetails();
-const endpoint = "http://localhost:8091/#/";
+const endpoint = "https://polite-bush-05fb25610.3.azurestaticapps.net";
 let shoppingListName = "Shopping list test"
 let itemName = "Orange"
 let itemComment = "For juice"
