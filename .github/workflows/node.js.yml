@@ -25,5 +25,5 @@ jobs:
         env:
           API_URL: http://127.0.0.1:8091/api/v1
         run: npm run test:contract
-          
-
+      - name: Run UI Component Tests
+        run: jest --config jest.config.js --testPathPattern=/src/test/component
