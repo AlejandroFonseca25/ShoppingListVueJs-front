@@ -10,6 +10,7 @@ const ShoppingListController = {
     })
   },
   getItemsLists () {
+    console.log(process.env.API_URL)
     return axiosInstance.get('/')
   },
   deleteItemsListById (listId) {
