@@ -3,8 +3,6 @@ name: Azure Static Web Apps CD
 on:
   push:
     branches: [ main ]
-env:
-  API_URL: 'https://shopping-list-back.azurewebsites.net/api/v1'
 jobs:
 #  e2e_tests:
 #    runs-on: ubuntu-latest
